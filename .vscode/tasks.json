@@ -1,0 +1,50 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile Arduino Sketch",
+            "type": "shell",
+            "command": "arduino-cli",
+            "args": [
+                "compile",
+                "--fqbn",
+                "esp32-bluepad32:esp32:esp32",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Upload Arduino Sketch",
+            "type": "shell",
+            "command": "arduino-cli",
+            "args": [
+                "upload",
+                "-p",
+                "COM4",
+                "--fqbn",
+                "esp32-bluepad32:esp32:esp32",
+            ],
+            "dependsOn": "Compile Arduino Sketch", // This sets the dependency
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
